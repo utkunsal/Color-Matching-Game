@@ -1,1 +1,1 @@
-# Identic-Color-Game
+# Python Assignment Identic Color Game
