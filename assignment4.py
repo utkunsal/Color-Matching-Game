@@ -1,15 +1,17 @@
 import sys
+# to create the game board using input file.
 with open(sys.argv[1]) as f:
     board = [x.strip().split() for x in f.readlines()]
 
+# prints the board.
 def view():
     for x in board:
         print(*x)
     print()
 
 score = 0
+# updates the score according to the item at y,x.
 def upd_score(x, y):
-    # x and y are coordinates.
     global score
     ball = board[y][x]
     if ball == "B": score += 9
@@ -22,8 +24,8 @@ def upd_score(x, y):
     elif ball == "D": score += 2
     elif ball == "F": score += 1
 
+# deletes the item at y,x.
 def disappear(x, y):
-    # x and y are coordinates.
     color = board[y][x]
     if color == "X":
         board[y][x] = " "
@@ -53,6 +55,7 @@ def disappear(x, y):
             if board[y - 1][x] == color:
                 disappear(x, y - 1)
 
+# if there are empty spaces below the items, moves those items down.
 def move_down():
     for repeat in range(len(board)-1):
         for y in range(1, len(board)):
@@ -64,6 +67,7 @@ def move_down():
         if board[0].count(" ") == len(board[0]):
             board.pop(0)
 
+# if there are empty columns, removes them.
 def move_left():
     x = 0
     while x < len(board[0]):
@@ -73,6 +77,7 @@ def move_left():
         else:
             x += 1
 
+# returns true if the game is not over, returns false if the game is over.
 def game_not_over():
     if board == []:
         return False
@@ -88,8 +93,8 @@ def game_not_over():
                 if board[y][x] == "X":
                     return True
 
+# returns true if the item at y,x has a neighbor.                
 def has_neighbor(x, y):
-    # x and y are coordinates.
     if x + 1 < len(board[0]):
         if board[y][x] == board[y][x + 1]: return True
     if y + 1 < len(board):
@@ -99,9 +104,11 @@ def has_neighbor(x, y):
     if y - 1 >= 0:
         if board[y][x] == board[y - 1][x]: return True
 
+        
 print()
 view()
 print(f"Your score is: {score}\n")
+# to start the game
 while game_not_over():
     inp = input("Please enter a row and column number: ").split()
     print()
