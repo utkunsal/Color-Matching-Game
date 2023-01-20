@@ -127,3 +127,4 @@ while game_not_over():
     except Exception:
         print("Please enter a valid size!\n")
 print("Game over!\n")
+
