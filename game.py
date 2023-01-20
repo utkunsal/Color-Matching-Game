@@ -1,9 +1,10 @@
 import sys
+
 # to create the game board using input file.
 with open(sys.argv[1]) as f:
     board = [x.strip().split() for x in f.readlines()]
 
-# prints the board.
+# prints the game board.
 def view():
     for x in board:
         print(*x)
@@ -93,7 +94,7 @@ def game_not_over():
                 if board[y][x] == "X":
                     return True
 
-# returns true if the item at y,x has a neighbor.                
+# returns true if the item at y,x has a neighbor with the same color.                
 def has_neighbor(x, y):
     if x + 1 < len(board[0]):
         if board[y][x] == board[y][x + 1]: return True
@@ -105,10 +106,10 @@ def has_neighbor(x, y):
         if board[y][x] == board[y - 1][x]: return True
 
         
+# to start the game        
 print()
 view()
 print(f"Your score is: {score}\n")
-# to start the game
 while game_not_over():
     inp = input("Please enter a row and column number: ").split()
     print()
