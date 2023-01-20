@@ -1,3 +1,5 @@
+Hacettepe University Programming Assignment
+
 # Color Matching Game
 
 This game is played on a rectangular board which consists of several rows and columns, initially filled with different colored balls. By selecting a group of adjoining balls of the same color, a player may remove them from the game board. Balls that are no longer supported will fall down, and a column without any balls will be trimmed away by other columns always sliding to the left side. In addition to the colored balls there may be a bomb on the board. If the player picks this bomb that shown by ”X” character, all the balls in the row and column will be removed regardless of their color. The goal of the game is to remove as many balls from the playing field as possible.
